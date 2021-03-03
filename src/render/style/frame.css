@@ -1,0 +1,42 @@
+.drag-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 40px);
+  height: 30px;
+  background-color: #333;
+  -webkit-app-region: drag;
+}
+
+#frame-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  line-height: 30px;
+  margin-left: 1rem;
+  font-weight: 600;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 30px;
+  background-color: #333;
+  display: inline-block;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.close-button img {
+  width: 30%;
+  filter: invert();
+}
+
+.close-button:hover {
+  background-color: rgb(214, 4, 4);
+}

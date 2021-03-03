@@ -1,0 +1,18 @@
+.header-row,
+.h2s-row {
+  display: flex;
+  width: 500px;
+  justify-content: space-around;
+  background: #555;
+  padding: 0 1rem;
+}
+
+.h2s-row > * {
+  width: 50%;
+  text-align: center;
+}
+
+.path-row {
+  display: flex;
+  justify-content: center;
+}

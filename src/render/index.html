@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hotkey2Sound</title>
+    <link rel="stylesheet" href="style/frame.css" />
+    <link rel="stylesheet" href="style/body.css" />
+    <link rel="stylesheet" href="style/table.css" />
+  </head>
+  <body>
+    <div class="drag-bar"></div>
+    <h5 id="frame-title">Hotkey2Sound</h5>
+    <div class="close-button">
+      <img src="./assets/images/close.png" />
+    </div>
+    <div class="real-body">
+      <div class="header-row">
+        <h2>Hotkey</h2>
+        <h2>Sound</h2>
+      </div>
+      <div class="hotkeys">
+        <div class="h2s-row">
+          <input id="hotkey-1" type="text" />
+          <div class="path-row">
+            <p id="path-1"></p>
+            <button id="change-sound-location-1">Change</button>
+          </div>
+        </div>
+      </div>
+      <button id="new-hotkey">New</button>
+      <section id="sounds">
+        <audio id="sound-1" src=""></audio>
+      </section>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
