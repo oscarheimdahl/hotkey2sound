@@ -13,4 +13,6 @@
 .real-body {
   margin-top: 30px;
   padding: 1rem;
+  background: white;
+  height: 100%;
 }

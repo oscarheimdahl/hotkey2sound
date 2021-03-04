@@ -9,29 +9,24 @@
   </head>
   <body>
     <div class="drag-bar"></div>
-    <h5 id="frame-title">Hotkey2Sound</h5>
+    <h5 id="frame-title">Hotkey2Sound - Settings</h5>
     <div class="close-button">
       <img src="./assets/images/close.png" />
     </div>
     <div class="real-body">
       <div class="header-row">
-        <h2>Hotkey</h2>
+        <h2 id="h2-1">Hotkey</h2>
         <h2>Sound</h2>
       </div>
-      <div class="hotkeys">
-        <div class="h2s-row">
-          <input id="hotkey-1" type="text" />
-          <div class="path-row">
-            <p id="path-1"></p>
-            <button id="change-sound-location-1">Change</button>
-          </div>
-        </div>
+      <div class="hotkeys"></div>
+      <div class="new-hotkey-row">
+        <button id="new-hotkey">+</button>
       </div>
-      <button id="new-hotkey">New</button>
-      <section id="sounds">
-        <audio id="sound-1" src=""></audio>
-      </section>
+      <section id="sounds"></section>
     </div>
-    <script src="./script.js"></script>
+    <script src="./js/store.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/path.js"></script>
   </body>
 </html>

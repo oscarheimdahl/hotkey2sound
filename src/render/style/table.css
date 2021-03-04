@@ -1,18 +1,109 @@
-.header-row,
-.h2s-row {
+.header-row {
   display: flex;
-  width: 500px;
+  width: calc(0.9 * 500px);
   justify-content: space-around;
-  background: #555;
-  padding: 0 1rem;
+  padding: 0.3rem;
 }
 
-.h2s-row > * {
-  width: 50%;
+.h2s-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  padding: 0.3rem;
+  background: white;
+  height: 30px;
+}
+#h2-1 {
+  margin-right: 2%;
+}
+
+.input-row,
+.path-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  width: 44%;
   text-align: center;
+  border: 1px solid black;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .path-row {
+  margin-left: 2%;
+}
+
+.path-row button {
+  width: 90%;
+  height: 100%;
+  font-size: 1rem;
+  background: none;
+  border: none;
+}
+.path-row button:focus {
+  outline: none;
+}
+
+.path-row button:hover {
+  cursor: pointer;
+}
+
+.input-row input {
+  width: 90%;
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: black;
+  font-size: 1rem;
+}
+
+.input-row input:focus {
+  outline: none;
+}
+
+.clear-button {
+  position: absolute;
+  right: 10%;
+  width: 10px;
+}
+
+.delete-row-button {
   display: flex;
   justify-content: center;
+  width: 10%;
+  visibility: hidden;
+}
+
+.delete-row-button img {
+  width: 10px;
+  /* height: 10px; */
+}
+
+.h2s-row:hover .delete-row-button {
+  visibility: visible;
+}
+
+.delete-row-button:hover {
+  cursor: pointer;
+}
+
+.clear-button:hover {
+  cursor: pointer;
+}
+
+.change-path-error {
+  border-color: tomato;
+}
+
+.new-hotkey-row {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  width: calc(500px * 0.9 - 1rem);
+}
+
+#new-hotkey {
+  width: 50px;
 }

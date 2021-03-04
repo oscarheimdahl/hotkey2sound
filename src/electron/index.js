@@ -1,4 +1,6 @@
 const { app, BrowserWindow, globalShortcut, dialog } = require('electron');
+const Store = require('electron-store');
+Store.initRenderer();
 const { ipcMain } = require('electron/main');
 const buildMenuIcon = require('./menuIcon.js');
 const buildSettingsWindow = require('./settings.js');
@@ -21,18 +23,22 @@ const showSettingsWindow = () => {
   settingsWindow.show();
 };
 
-const playSound = (target) => {
-  settingsWindow.webContents.send('playSound', target);
-};
-
-ipcMain.on('commandChange', (_, { target, shift, control, alt, key, old }) => {
+ipcMain.on('hotkeyChange', (_, { target, shift, control, alt, key, old }) => {
   const hotkeyString = renderHotkeyToGlobal(shift, control, alt, key);
-  if (old && globalShortcut.isRegistered(old)) globalShortcut.unregister(old);
+  if (!hotkeyString) return;
   const ret = globalShortcut.register(hotkeyString, () => {
-    console.log(hotkeyString + ' is pressed');
-    playSound(target);
+    settingsWindow.webContents.send('playSound', target);
   });
   notifyNewHotkey(target, hotkeyString);
+});
+
+ipcMain.on('clearAllHotkeys', () => {
+  globalShortcut.unregisterAll();
+});
+
+ipcMain.on('clearHotkey', (_, hotkey) => {
+  if (hotkey && globalShortcut.isRegistered(hotkey))
+    globalShortcut.unregister(hotkey);
 });
 
 const notifyNewHotkey = (target, hotkey) => {
@@ -46,12 +52,12 @@ const renderHotkeyToGlobal = (shift, control, alt, key) => {
   return shiftString + controlString + altString + key;
 };
 
-ipcMain.on('dialog', async (_, target) => {
-  console.log('dialog');
+ipcMain.on('dialog', async (_, index) => {
   const { filePaths } = await dialog.showOpenDialog({
     properties: ['openFile', 'multiSelections'],
   });
-  settingsWindow.webContents.send('path', { target, path: filePaths[0] });
+  if (!filePaths || !filePaths[0]) return;
+  settingsWindow.webContents.send('path', { index, path: filePaths[0] });
 });
 
 app.on('ready', init);
