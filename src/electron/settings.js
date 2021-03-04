@@ -5,6 +5,9 @@ const buildSettingsWindow = () => {
   window = new BrowserWindow({
     show: false,
     frame: false,
+    width: 550,
+    height: 600,
+    // resizable: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,

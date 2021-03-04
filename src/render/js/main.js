@@ -4,6 +4,11 @@ let hotkeysData = JSON.parse(store.get('hotkeys'));
 buildRowsFromStore();
 
 const newHotkey = document.getElementById('new-hotkey');
+const closeButton = document.getElementById('close-button');
+
+closeButton.addEventListener('click', () => {
+  ipcRenderer.send('closeSettings');
+});
 
 newHotkey.addEventListener('click', () => {
   const keys = Object.keys(hotkeysData);
@@ -32,9 +37,12 @@ ipcRenderer.on('playSound', (_, target) => {
 
 function showCantPlaySound(target) {
   const nr = target.charAt(target.length - 1);
-  document.getElementById(`change-path-${nr}`).className = 'change-path-error';
+  document.getElementById(`change-path-${nr}`).parentNode.className =
+    'path-row change-path-error';
   setTimeout(
-    () => (document.getElementById(`change-path-${nr}`).className = ''),
+    () =>
+      (document.getElementById(`change-path-${nr}`).parentNode.className =
+        'path-row'),
     500
   );
 }
@@ -48,7 +56,7 @@ function buildRowsFromStore() {
     const sound = hotkeysData[hotkeyIndex].sound;
     const newRow = buildNewRow(hotkeyIndex, hotkey, sound);
     const newSound = createElementFromHTML(
-      `<audio id="sound-${hotkeyIndex}" src="${sound}"></audio>`
+      `<audio id="sound-${hotkeyIndex}" src="${sound || ' '}"></audio>`
     );
     document.getElementsByClassName('hotkeys')[0].appendChild(newRow);
     document.getElementById('sounds').appendChild(newSound);
@@ -83,10 +91,11 @@ function buildNewRow(hotkeyIndex, hotkey, sound) {
   <div class="path-row">
     <p path="${sound}" id="path-${hotkeyIndex}">${cleanPath(sound)}</p>
     <button
+    class="path-button"
       style="display: ${sound ? 'none' : 'block'}"
       id="change-path-${hotkeyIndex}"
     >
-      Change
+    Open File...
     </button>
     <img
       class="clear-button"
@@ -158,8 +167,12 @@ function hotkey(e) {
   const alt = e.getModifierState('Alt');
   if (!shift && !control && !alt) return;
   const key = e.code.charAt(e.code.length - 1);
-  const nr = e.target.id.charAt(e.target.id.length - 1);
-  hotkeysData[nr].hotkey = formatShownHotkey(shift, control, alt, key);
+  hotkeysData[getIDIndex(e.target.id)].hotkey = formatShownHotkey(
+    shift,
+    control,
+    alt,
+    key
+  );
   buildRowsFromStore();
 }
 

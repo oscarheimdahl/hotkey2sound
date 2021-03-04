@@ -1,5 +1,5 @@
 .drag-bar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: calc(100% - 40px);
@@ -9,7 +9,7 @@
 }
 
 #frame-title {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   color: white;
@@ -18,8 +18,8 @@
   font-weight: 600;
 }
 
-.close-button {
-  position: absolute;
+#close-button {
+  position: fixed;
   top: 0;
   right: 0;
   width: 40px;
@@ -32,11 +32,11 @@
   overflow: hidden;
 }
 
-.close-button img {
+#close-button img {
   width: 30%;
   filter: invert();
 }
 
-.close-button:hover {
+#close-button:hover {
   background-color: rgb(214, 4, 4);
 }

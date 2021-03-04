@@ -36,6 +36,11 @@ ipcMain.on('clearAllHotkeys', () => {
   globalShortcut.unregisterAll();
 });
 
+ipcMain.on('closeSettings', () => {
+  console.log('here');
+  settingsWindow.hide();
+});
+
 ipcMain.on('clearHotkey', (_, hotkey) => {
   if (hotkey && globalShortcut.isRegistered(hotkey))
     globalShortcut.unregister(hotkey);

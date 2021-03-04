@@ -19,28 +19,16 @@
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {},
+        "packagerConfig": {
+            "icon": "./src/assets/icon.icns"
+            },    
       "makers": [
         {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "hotkey2sound"
+            "name": "@electron-forge/maker-squirrel",
+            "config": {
+              "iconUrl": "https://raw.githubusercontent.com/oscarheimdahl/break-timer-2/master/src/assets/icon.ico"
+            }
           }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
       ]
     }
   },

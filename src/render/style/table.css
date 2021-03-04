@@ -2,7 +2,7 @@
   display: flex;
   width: calc(0.9 * 500px);
   justify-content: space-around;
-  padding: 0.3rem;
+  padding-right: calc(0.1 * 500px);
 }
 
 .h2s-row {
@@ -10,8 +10,8 @@
   justify-content: center;
   align-items: center;
   width: 500px;
-  padding: 0.3rem;
-  background: white;
+  padding: 0.3rem 0;
+  /* background: white; */
   height: 30px;
 }
 #h2-1 {
@@ -63,10 +63,18 @@
   outline: none;
 }
 
+.input-row input::placeholder {
+  color: #888;
+}
+
 .clear-button {
   position: absolute;
   right: 10%;
   width: 10px;
+}
+
+.path-button {
+  color: #888;
 }
 
 .delete-row-button {
@@ -94,14 +102,16 @@
 }
 
 .change-path-error {
-  border-color: tomato;
+  border: solid 2px rgb(221, 1, 1);
+  padding: -2px;
 }
 
 .new-hotkey-row {
   display: flex;
   justify-content: center;
-  padding: 1rem;
-  width: calc(500px * 0.9 - 1rem);
+  padding: 1rem 0;
+  padding-right: calc(500px * 0.1);
+  width: calc(500px * 0.9);
 }
 
 #new-hotkey {
