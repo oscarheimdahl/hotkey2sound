@@ -1,6 +1,8 @@
 const { ipcRenderer } = require('electron');
-const { ipcMain } = require('electron/main');
-let hotkeysData = JSON.parse(store.get('hotkeys'));
+const storeData = store.get('hotkeys');
+let hotkeysData;
+if (storeData) hotkeysData = JSON.parse(storeData);
+else hotkeysData = {};
 buildRowsFromStore();
 
 const newHotkey = document.getElementById('new-hotkey');
@@ -115,7 +117,9 @@ function buildNewRow(hotkeyIndex, hotkey, sound) {
 }
 
 function cleanPath(path) {
-  return path.substr(path.lastIndexOf('\\') + 1, path.length);
+  const fileName = path.substr(path.lastIndexOf('\\') + 1, path.length);
+  if (fileName.length > 15) return fileName.substr(0, 15) + '...';
+  return fileName;
 }
 
 function setListeners(index) {

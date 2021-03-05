@@ -14,7 +14,7 @@ if (require('electron-squirrel-startup')) {
 let settingsWindow;
 
 const init = () => {
-  buildMenuIcon(showSettingsWindow, app.quit);
+  buildMenuIcon(showSettingsWindow, app.exit);
   settingsWindow = buildSettingsWindow();
 };
 

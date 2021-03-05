@@ -20,13 +20,13 @@
   "config": {
     "forge": {
         "packagerConfig": {
-            "icon": "./src/assets/icon.icns"
+            "icon": "./src/icons/icon.ico"
             },    
       "makers": [
         {
             "name": "@electron-forge/maker-squirrel",
             "config": {
-              "iconUrl": "https://raw.githubusercontent.com/oscarheimdahl/break-timer-2/master/src/assets/icon.ico"
+              "iconUrl": "https://raw.githubusercontent.com/oscarheimdahl/hotkey2sound/master/src/icons/icon.ico"
             }
           }
       ]

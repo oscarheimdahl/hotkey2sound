@@ -9,7 +9,7 @@ const buildMenuIcon = (showSettingsWindow, quit) => {
       click: showSettingsWindow,
     },
     { type: 'separator' },
-    { label: 'Quit', click: quit },
+    { label: 'Quit', click: () => quit() },
   ]);
   menuIcon.setContextMenu(menu);
 };
